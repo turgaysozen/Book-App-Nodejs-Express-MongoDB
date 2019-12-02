@@ -1,0 +1,28 @@
+<h2>Search Books</h2>
+<form action="/books" method="GET">
+    <div>
+        <label>Title</label>
+        <input type="text" name="title" value="<%= searchObject.title%>">
+    </div>
+    <div>
+        <label>Published After</label>
+        <input type="date" name="publishedAfter" value="<%= searchObject.publishedAfter%>">
+    </div>
+    <div>
+        <label>Published Before</label>
+        <input type="date" name="publishedBefore" value="<%= searchObject.publishedBefore%>">
+    </div>
+    <button type="submit">Search</button>
+</form>
+<br>
+<div>
+    <%let i = 0;%>
+    <% books.forEach(book => { %>
+    <%i++%>
+    <div style="float:left; margin-left: 10px; border: solid grey;">
+        <label style="color: red;"><b><%= i + ' - ' + book.title%></b></label><br>
+        <img height="160px" width="130px" src="<%= book.coverImagePath%>"><br>
+        <label>Date: <%=  book.publishDate.toISOString().split('T')[0]%></label>
+    </div>
+    <%})%>
+</div>

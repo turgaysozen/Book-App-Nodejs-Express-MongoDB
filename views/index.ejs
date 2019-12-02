@@ -1,1 +1,12 @@
-Middle
+<h3>Recently Added</h3>
+<div>
+    <%let i = 0;%>
+    <% books.forEach(book => { %>
+    <%i++%>
+    <div style="float:left; margin-left: 10px; border: solid grey;">
+        <label style="color: red;"><b><%= i + ' - ' + book.title%></b></label><br>
+        <img height="160px" width="130px" src="<%= book.coverImagePath%>"><br>
+        <label>Date: <%=  book.publishDate.toISOString().split('T')[0]%></label>
+    </div>
+    <%})%>
+</div>
