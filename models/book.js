@@ -43,5 +43,4 @@ bookShema.virtual('coverImagePath').get(function () {
     }
 });
 
-
 module.exports = mongoose.model('Book', bookShema);
