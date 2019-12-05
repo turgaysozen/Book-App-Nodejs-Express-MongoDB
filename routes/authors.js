@@ -3,7 +3,6 @@ const router = express.Router();
 const Author = require('../models/author');
 const Book = require('../models/book');
 
-
 //All authors route
 router.get('/', async (req, res) => {
     let searchObject;
@@ -16,7 +15,7 @@ router.get('/', async (req, res) => {
             authors: authors,
             searchObject: req.query,
         });
-    } catch (err){
+    } catch {
         res.redirect('/');
     }
 });
