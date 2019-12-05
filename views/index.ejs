@@ -3,9 +3,11 @@
     <%let i = 0;%>
     <% books.forEach(book => { %>
     <%i++%>
-    <div style="float:left; margin-left: 10px; border: solid grey;">
+    <div style="float:left; margin-left: 10px; border: solid grey; height: 215px; width:125px">
         <label style="color: red;"><b><%= i + ' - ' + book.title%></b></label><br>
-        <img height="160px" width="130px" src="<%= book.coverImagePath%>"><br>
+        <center>
+            <img height="150px" width="120px" src="<%= book.coverImagePath%>"><br>
+        </center>
         <label>Date: <%=  book.publishDate.toISOString().split('T')[0]%></label>
     </div>
     <%})%>

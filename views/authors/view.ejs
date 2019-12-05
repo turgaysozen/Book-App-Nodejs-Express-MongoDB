@@ -1,0 +1,22 @@
+<h2>Books By <label style="color:red"><%=author.name%></label>
+    <a style="color:blue" href="/authors/<%= author.id%>/edit">Edit</a>
+    
+    <%if(booksByAuthor.length == 0){%>
+        <%- include('../partials/deleteForm',
+        {url: `/authors/${author.id}`})%>
+    <%}%>
+</h2>
+
+<div style="margin-left: -5px;">
+        <label><b>Total: <%= booksByAuthor.length%> books</b></label>        
+        <br>
+        <%let i = 0;%>
+        <% booksByAuthor.forEach(book => { %>
+        <%i++%>
+        <div style="float:left; margin-top:5px; margin-left:5px; border: solid grey;">
+            <label style="color: red;"><b><%= i + ' - ' + book.title%></b></label><br>
+            <img height="160px" width="130px" src="<%= book.coverImagePath%>"><br>
+            <label>Date: <%=  book.publishDate.toISOString().split('T')[0]%></label>
+        </div>
+        <%})%>
+    </div>
