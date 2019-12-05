@@ -12,16 +12,13 @@ router.get('/', async (req, res) => {
     }
     try {
         const authors = await Author.find(searchObject);
-        
         res.render('authors/index', {
             authors: authors,
             searchObject: req.query,
         });
     } catch (err){
-        console.log(err)
         res.redirect('/');
     }
-    // res.render('authors/index');
 });
 
 // New author route
