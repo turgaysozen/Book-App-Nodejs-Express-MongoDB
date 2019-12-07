@@ -83,7 +83,6 @@ router.put('/:id', async (req, res) => {
     try {
         let book;
         book = await Book.findById(req.params.id);
-        const author = await Author.findById(book.author);
         book.title = req.body.title;
         book.author = req.body.author;
         book.publishDate = new Date(req.body.publishDate);
@@ -92,8 +91,8 @@ router.put('/:id', async (req, res) => {
         if (req.body.cover != null && req.body.cover !== '') {
             saveCover(book, req.body.cover);
         }
-        console.log(req.body)
         await book.save();
+        const author = await Author.findById(book.author);
         res.render('books/view', { 
             book: book,
             author: author
