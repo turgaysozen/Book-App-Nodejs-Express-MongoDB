@@ -7,7 +7,7 @@ const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 //All book route
 router.get('/', async (req, res) => {
     let searchObject = {};
-    let query = Book.find();
+    //let query = Book.find();
     if (req.query.title != null && req.query.title !== '') {
         //query = query.regex('title', new Regex(req.query.title, 'i'));
         searchObject.title = new RegExp(req.query.title, 'i');
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
         searchObject.publishedAfter = query.gte('publishDate', req.query.publishedAfter);
     }
     try {
-        const books = await Book.find(searchObject).sort({ createdAt: 'asc' }).limit(50);
+        const books = await Book.find(searchObject).sort({ createdAt: 'asc' }).limit(50).exec();
         res.render('books/index', {
             books: books,
             searchObject: req.query
@@ -43,13 +43,82 @@ router.post('/', async (req, res) => {
         pageCount: req.body.pageCount,
         description: req.body.description,
     });
-    saveCover(book, req.body.cover);
     try {
+        saveCover(book, req.body.cover);
         const newBook = await book.save();
         res.redirect('books');
     }
     catch{
         renderNewPage(res, book, true);
+    }
+});
+
+router.get('/:id', async (req, res) => {
+    try {
+        const book = await Book.findById(req.params.id);
+        const author = await Author.findById(book.author);
+        res.render('books/view', {
+            book: book,
+            author: author,
+        });
+    } catch  {
+        res.redirect('/books');
+    }
+});
+
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const book = await Book.findById(req.params.id);
+        const authors = await Author.find();
+        res.render('books/edit', {
+            book: book,
+            authors: authors,
+        });
+    } catch  {
+        res.redirect('/books');
+    }
+});
+
+router.put('/:id', async (req, res) => {
+    try {
+        let book;
+        book = await Book.findById(req.params.id);
+        const author = await Author.findById(book.author);
+        book.title = req.body.title;
+        book.author = req.body.author;
+        book.publishDate = new Date(req.body.publishDate);
+        book.pageCount = req.body.pageCount;
+        book.description = req.body.description;
+        if (req.body.cover != null && req.body.cover !== '') {
+            saveCover(book, req.body.cover);
+        }
+        console.log(req.body)
+        await book.save();
+        res.render('books/view', { 
+            book: book,
+            author: author
+        });
+    } catch {
+        res.redirect('/books');
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    let book;
+    try {
+        book = await Book.findById(req.params.id);
+        if (book != null) {
+            await book.remove();
+            res.redirect('/books');
+        }
+    }
+    catch {
+        if(book != null){
+            res.redirect(`/books/${book.id}`);
+        }
+        else{
+            res.redirect('/books');
+        }
     }
 });
 

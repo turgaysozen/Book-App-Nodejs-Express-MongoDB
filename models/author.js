@@ -7,6 +7,7 @@ const authorShema = new mongoose.Schema({
         required: true
     }
 });
+
 authorShema.pre('remove', function (next) {
     Book.find({ author: this.id }, (err, books) => {
         if (err) {

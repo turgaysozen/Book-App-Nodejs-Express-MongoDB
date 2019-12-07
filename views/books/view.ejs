@@ -1,0 +1,11 @@
+<label style="color: red;"><b><%= book.title%></b></label>
+<label><b>By <%= author.name%></b></label>
+
+<br>
+<div style="float:left; margin-top:5px; margin-left:5px; border: solid grey;">
+        <img height="160px" width="130px" src="<%= book.coverImagePath%>"><br>
+        <label>Date: <%=  book.publishDate.toISOString().split('T')[0]%></label><br>
+        <a href="/books/<%= book.id%>/edit">Edit</a>
+        <%- include('../partials/deleteForm',
+        {url: `/books/${book.id}`})%>
+    </div>

@@ -24,7 +24,8 @@
     <div style="float:left; margin-top:5px; margin-left:5px; border: solid grey;">
         <label style="color: red;"><b><%= i + ' - ' + book.title%></b></label><br>
         <img height="160px" width="130px" src="<%= book.coverImagePath%>"><br>
-        <label>Date: <%=  book.publishDate.toISOString().split('T')[0]%></label>
+        <label>Date: <%=  book.publishDate.toISOString().split('T')[0]%></label><br>
+        <a href="/books/<%= book.id%>">View</a>
     </div>
     <%})%>
 </div>
