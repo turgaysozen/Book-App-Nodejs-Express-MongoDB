@@ -20,9 +20,11 @@ router.get('/', async (req, res) => {
     }
     try {
         const books = await Book.find(searchObject).sort({ createdAt: 'asc' }).limit(50).exec();
+        const authors = await Author.find();
         res.render('books/index', {
             books: books,
-            searchObject: req.query
+            searchObject: req.query,
+            authors: authors
         });
     } catch{
         res.redirect('/');
@@ -57,11 +59,13 @@ router.get('/:id', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id);
         const author = await Author.findById(book.author);
+
         res.render('books/view', {
             book: book,
             author: author,
         });
-    } catch  {
+    } catch (err) {
+        console.log(err)
         res.redirect('/books');
     }
 });
@@ -93,7 +97,7 @@ router.put('/:id', async (req, res) => {
         }
         await book.save();
         const author = await Author.findById(book.author);
-        res.render('books/view', { 
+        res.render('books/view', {
             book: book,
             author: author
         });
@@ -112,10 +116,10 @@ router.delete('/:id', async (req, res) => {
         }
     }
     catch {
-        if(book != null){
+        if (book != null) {
             res.redirect(`/books/${book.id}`);
         }
-        else{
+        else {
             res.redirect('/books');
         }
     }

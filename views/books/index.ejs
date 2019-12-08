@@ -16,16 +16,63 @@
 </form>
 <br>
 
-<div style="margin-left: -5px;">
+<%let j = 0;%>
+<b><label>Total Author: <%= books.length%></label></b>
+
+<table style="margin-top:10px">
+    <tr>
+        <th>No</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Process</th>
+    </tr>
+
+
+    <% books.forEach(book => { %>
+    <%j++;%>
+    <tr>
+        <div>
+            <div class="author-row">
+                <td style="width: 5%;"><%=j%></td>
+                <div class="author-name">
+                    <td><%= book.title%></td>
+                </div>
+                <td style="width: 25%;">
+                    <% authors.forEach(author => { %>
+                    <%if(author.id == book.author){%>
+                    <%=author.name%>
+                    <%}%>
+                    <% })%>
+                </td>
+
+                <td style="width: 20%;">
+                    <div class="btn-row">
+                        <a class="btn btn-primary" href="/books/<%= book.id%>">View</a>
+                        <a class="btn btn-primary" href="/books/<%= book.id%>/edit">Edit</a>
+                        <%- include('../partials/deleteForm', { url: `/books/${ book.id}`})%>
+                    </div>
+                </td>
+            </div>
+        </div>
+    </tr>
+    <%})%>
+
+
+</table>
+
+
+<!-- <div>
     <label><b>Total: <%= books.length%> books</b></label><br>
     <%let i = 0;%>
     <% books.forEach(book => { %>
     <%i++%>
-    <div style="float:left; margin-top:5px; margin-left:5px; border: solid grey;">
-        <label style="color: red;"><b><%= i + ' - ' + book.title%></b></label><br>
-        <img height="160px" width="130px" src="<%= book.coverImagePath%>"><br>
-        <label>Date: <%=  book.publishDate.toISOString().split('T')[0]%></label><br>
-        <a href="/books/<%= book.id%>">View</a>
+    <div class="book-row">
+        <center>
+            <a href="/books/<%= book.id%>"><%= book.title%>
+                <img src="<%= book.coverImagePath%>">
+            </a>
+            <label>Publish Date: <%=  book.publishDate.toISOString().split('T')[0]%></label>
+        </center>
     </div>
     <%})%>
-</div>
+</div> -->

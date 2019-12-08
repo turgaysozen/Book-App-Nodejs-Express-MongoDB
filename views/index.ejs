@@ -1,17 +1,17 @@
-<h3>Recently Added</h3>
+<h2 class="page-header">Recently Added
+    <label style="float: right; font-size: 18px; margin-top: 30px; margin-right: 15px;"><b>Total: <%= books.length%> books</b></label>
+</h2>
 <div>
     <%let i = 0;%>
     <% books.forEach(book => { %>
     <%i++%>
-    <div style="float:left; margin-left: 10px; border: solid grey; height: 215px; width:125px">
-        <label style="color: red;"><b><%= i + ' - ' + book.title%></b></label><br>
+    <div class="book-row">
         <center>
-            <img height="150px" width="120px" src="<%= book.coverImagePath%>"><br>
+            <a href="/books/<%= book.id%>"><%= book.title%>
+                <img src="<%= book.coverImagePath%>">
+            </a>
+            <label>Publish Date: <%=  book.publishDate.toISOString().split('T')[0]%></label>
         </center>
-        <label>Date: <%=  book.publishDate.toISOString().split('T')[0]%></label>
-        <br>
-        <a href="/books/<%= book.id%>">View</a>
-
     </div>
     <%})%>
 </div>

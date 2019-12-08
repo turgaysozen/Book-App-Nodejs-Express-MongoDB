@@ -11,9 +11,11 @@ router.get('/', async (req, res) => {
     }
     try {
         const authors = await Author.find(searchObject);
+        const books = await Book.find();
         res.render('authors/index', {
             authors: authors,
             searchObject: req.query,
+            books:books,
         });
     } catch {
         res.redirect('/');
@@ -39,7 +41,7 @@ router.post('/', async (req, res) => {
     } catch  {
         res.render('authors/new', {
             author: author,
-            errorMessage: author + ' Error Creating Author'
+            errorMessage: ' Error Creating Author'
         });
     }
 });

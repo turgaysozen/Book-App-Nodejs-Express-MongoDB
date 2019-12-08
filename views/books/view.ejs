@@ -1,5 +1,5 @@
 <label style="color: red;"><b><%= book.title%></b></label>
-<label><b>By <%= author.name%></b></label>
+<label><b>By <%= author != null ? author.name : 'No Author' %></b></label>
 
 <br>
 <div style="float:left; margin-top:5px; margin-left:5px; border: solid grey;">

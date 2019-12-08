@@ -1,0 +1,27 @@
+.book-row{
+    float: left;
+    width: 178px;
+    height: 290px;
+    border: 1px solid black;
+    border-radius: 0.2rem;
+    padding: .3rem;
+    background-color: rgb(67, 178, 212);
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.book-row img{
+    border: 1px solid black;
+    border-radius: 0.2rem;
+    height: 170px;
+    width: 135px;
+    margin-top: 0.5rem;
+    margin-bottom:0.5rem
+}
+.book-row a {
+    font-size: 20px;
+    color: rgb(255, 0, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

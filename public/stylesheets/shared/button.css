@@ -1,0 +1,38 @@
+.btn{
+    border: 1.5px solid black;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    font-family: g;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+
+.btn-primary{
+    background-color: rgb(86, 159, 243);
+}
+
+.btn-danger{
+    background-color: rgb(240, 92, 92);
+}
+
+.btn-success{
+    background-color: rgb(89, 255, 67);
+}
+
+.btn-row{
+    display: flex;
+    align-items: flex-start;
+
+
+}
+.btn-row > *{
+    margin-left: 0.5rem;
+}
+
+.btn-row > * :first-child{
+    margin-left: 0;
+}
+

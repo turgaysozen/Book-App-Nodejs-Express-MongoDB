@@ -2,16 +2,63 @@
 <form action="/authors" method="GET">
     <label>Name</label>
     <input type="text" name="name" value="<%= searchObject.name%>">
-    <button type="submit">Search</button>
+    <button class="btn btn-success" type="submit">Search</button>
 </form>
 <br>
-<%let i = 0;%>
-<% authors.forEach(author => { %>
-<%i++%>
-<div>
-    <%=i + ' - ' + author.name%>
-    <a href="/authors/<%= author.id%>">View |</a>
-    <a href="/authors/<%= author.id%>/edit">Edit |</a>
-    <%- include('../partials/deleteForm', { url: `/authors/${ author.id}`})%>
-</div>
-<%})%>
+<%let j = 0;%>
+<b><label>Total Author: <%= authors.length%></label></b>
+<table style="margin-top:10px">
+    <tr>
+        <th>No</th>
+        <th>Author</th>
+        <th>Books</th>
+        <th>Process</th>
+    </tr>
+
+
+    <% authors.forEach(author => { %>
+    <%j++;%>
+    <tr>
+        <div>
+            <div class="author-row">
+                <td style="width: 5%;"><%=j%></td>
+                <div class="author-name">
+                    <td style="width: 25%;"><%= author.name%></td>
+                </div>
+                <%let bookL = ''%>
+                <% books.forEach(book => { %>
+
+                <% if(author.id == book.author) { %>
+
+                <% bookL += book.title + ', ';%>
+
+                <% } %>
+                <% })%>
+
+                <%let newList = bookL.split(',')%>
+
+                <%let renderList = '', counter = 0%>
+                <%newList.forEach(item => {%>
+                <% counter++;%>
+                <%if(newList.length -1 > counter){%>
+                <%renderList += item + ', '; %>
+                <%} else {%>
+                <%renderList += item; %>
+                <%}%>
+                <% })%>
+                <td><%= renderList %></td>
+
+                <td style="width:20%">
+                    <div class="btn-row">
+                        <a class="btn btn-primary" href="/authors/<%= author.id%>">View</a>
+                        <a class="btn btn-primary" href="/authors/<%= author.id%>/edit">Edit</a>
+                        <%- include('../partials/deleteForm', { url: `/authors/${ author.id}`})%>
+                    </div>
+                </td>
+            </div>
+        </div>
+    </tr>
+    <%})%>
+
+
+</table>
