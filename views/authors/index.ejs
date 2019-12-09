@@ -1,21 +1,48 @@
-<h2>Search Authors</h2>
-<form action="/authors" method="GET">
-    <label>Name</label>
-    <input type="text" name="name" value="<%= searchObject.name%>">
-    <button class="btn btn-success" type="submit">Search</button>
-</form>
-<br>
-<%let j = 0;%>
-<b><label>Total Author: <%= authors.length%></label></b>
-<table style="margin-top:10px">
+<div class="form-row">
+    <div class="form-item">
+        <h3>Search Authors</h3>
+        <form action="/authors" method="GET">
+            <div class="form-item">
+                <label>Name</label>
+                <input type="text" name="name" value="<%searchObject != null ? searchObject.name : null%>">
+            </div>
+            <br>
+            <button class="btn btn-success" type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="form-item">
+        <h3>Add New Author</h3>
+        <form action="/authors" method="POST">
+            <div class="form-row">
+                <div class="form-item">
+                    <%- include('_form_fields') %>
+                </div>
+                <div style="margin-top: 5px;" class="form-row">
+                    <div style="margin-left: 10px;"class="form-item">
+                        <br>
+                        <button style="margin-left: 10px;" class="btn btn-primary" type="submit">Create</button>
+                    </div>
+                    <!-- <div class="form-item">
+                        <br>
+                        <a class="btn btn-danger" href="/authors">Cancel</a>
+                    </div> -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table>
+    <caption style="margin-left: 1000px; margin-bottom: 5px; font-weight: bold; font-size: 16px;">Total Author:
+        <%= authors.length%></caption>
     <tr>
         <th>No</th>
         <th>Author</th>
         <th>Books</th>
         <th>Process</th>
     </tr>
-
-
+    <%let j = 0;%>
     <% authors.forEach(author => { %>
     <%j++;%>
     <tr>
@@ -27,16 +54,11 @@
                 </div>
                 <%let bookL = ''%>
                 <% books.forEach(book => { %>
-
                 <% if(author.id == book.author) { %>
-
                 <% bookL += book.title + ', ';%>
-
                 <% } %>
                 <% })%>
-
-                <%let newList = bookL.split(',')%>
-
+                <!-- <%let newList = bookL.split(',')%>
                 <%let renderList = '', counter = 0%>
                 <%newList.forEach(item => {%>
                 <% counter++;%>
@@ -45,20 +67,27 @@
                 <%} else {%>
                 <%renderList += item; %>
                 <%}%>
-                <% })%>
-                <td><%= renderList %></td>
-
+                <% })%> -->
+                <td><%= bookL.substring(0, bookL.length - 2).length > 60 ? bookL.substring(0, bookL.length - 2) + '...' : bookL.substring(0, bookL.length - 2) %>
+                </td>
                 <td style="width:20%">
                     <div class="btn-row">
                         <a class="btn btn-primary" href="/authors/<%= author.id%>">View</a>
                         <a class="btn btn-primary" href="/authors/<%= author.id%>/edit">Edit</a>
+                        <%if(author.book){%>
+                        <button class="btn btn-danger" title="This Author has at least 1 book, you can not delete!"
+                            disabled type="button" href="/authors/<%= author.id%>/edit">Delete</button>
+                        <%} else {%>
                         <%- include('../partials/deleteForm', { url: `/authors/${ author.id}`})%>
+
+                        <%}%>
+
+                        <!-- <%- include('../partials/deleteForm', { url: `/authors/${ author.id}`})%> -->
                     </div>
                 </td>
+
             </div>
         </div>
     </tr>
     <%})%>
-
-
 </table>

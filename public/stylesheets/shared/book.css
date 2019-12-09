@@ -1,3 +1,15 @@
+:root {
+--book-cover-width: 200px;
+--book-cover-width-large: 325px;
+--book-cover-aspect-ratio: 0.75;
+}
+
+.filepond{
+    width: var(--book-cover-width);
+    height: calc(var(--book-cover-width) / var(--book-cover-aspect-ratio));
+    background-color: rgb(67, 178, 212);
+}
+
 .book-row{
     float: left;
     width: 178px;
@@ -22,6 +34,7 @@
 }
 .book-row a {
     font-size: 20px;
-    color: rgb(255, 0, 0);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(173, 0, 241);
+    text-decoration: none;
+    font-size: 1.3rem;
 }

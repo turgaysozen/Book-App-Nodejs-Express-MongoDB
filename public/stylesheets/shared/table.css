@@ -1,9 +1,11 @@
 table {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-collapse: collapse;
     width: 100%;
     background-color: rgb(185, 167, 4);
+    font-size: 1rem;
+    margin-top: -1rem;
   }
+
   
   td, th {
     border: 1.2px solid black;
@@ -14,3 +16,5 @@ table {
   tr:nth-child(even) {
     background-color: #e9db5d;
   }
+
+ 

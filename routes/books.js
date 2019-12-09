@@ -6,20 +6,19 @@ const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
 //All book route
 router.get('/', async (req, res) => {
-    let searchObject = {};
-    //let query = Book.find();
+    let searchObject = Book.find()
     if (req.query.title != null && req.query.title !== '') {
         //query = query.regex('title', new Regex(req.query.title, 'i'));
         searchObject.title = new RegExp(req.query.title, 'i');
     }
-    if (req.query.publishedBefore != null && req.query.publishedBefore !== '') {
-        searchObject.publishedBefore = query.lte('publishDate', req.query.publishedBefore);
+    if (req.query.publishedBefore != null && req.query.publishedBefore != '') {
+        searchObject.publishedBefore = searchObject.lte('publishDate', req.query.publishedBefore);
     }
-    if (req.query.publishedAfter != null && req.query.publishedAfter !== '') {
-        searchObject.publishedAfter = query.gte('publishDate', req.query.publishedAfter);
+    if (req.query.publishedAfter != null && req.query.publishedAfter != '') {
+        searchObject.publishedAfter = searchObject.gte('publishDate', req.query.publishedAfter);
     }
     try {
-        const books = await Book.find(searchObject).sort({ createdAt: 'asc' }).limit(50).exec();
+        const books = await Book.find(searchObject).sort({ createdAt: 'desc' }).limit(50).exec();
         const authors = await Author.find();
         res.render('books/index', {
             books: books,
@@ -58,8 +57,7 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id);
-        const author = await Author.findById(book.author);
-
+        const author = await Author.findById(book.author);  
         res.render('books/view', {
             book: book,
             author: author,

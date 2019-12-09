@@ -12,10 +12,18 @@ router.get('/', async (req, res) => {
     try {
         const authors = await Author.find(searchObject);
         const books = await Book.find();
+        authors.forEach(author => {
+            books.forEach(book => {
+                if(author.id == book.author){
+                    author.book = true;
+                }
+            });
+        });
         res.render('authors/index', {
             authors: authors,
             searchObject: req.query,
             books:books,
+            singleauthor: new Author,
         });
     } catch {
         res.redirect('/');
@@ -39,9 +47,14 @@ router.post('/', async (req, res) => {
         res.redirect('/authors');
 
     } catch  {
-        res.render('authors/new', {
-            author: author,
-            errorMessage: ' Error Creating Author'
+        const authors = await Author.find();
+        const books = await Book.find();
+        res.render('authors', {
+            singleauthor : author,
+            errorMessage: 'Error Creating Author',
+            searchObject: null,
+            authors: authors,
+            books: books,
         });
     }
 });
@@ -63,7 +76,7 @@ router.get('/:id/edit', async (req, res) => {
     const author = await Author.findById(req.params.id);
     try {
         res.render('authors/edit', {
-            author: author,
+            singleauthor: author,
         });
     } catch  {
         res.redirect('/authors');
@@ -83,7 +96,7 @@ router.put('/:id', async (req, res) => {
         }
         else {
             res.render('authors/edit', {
-                author: author,
+                singleauthor : author,
                 errorMessage: 'Error Updating Author',
             });
         }

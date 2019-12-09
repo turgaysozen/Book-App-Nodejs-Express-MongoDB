@@ -1,23 +1,25 @@
 <h2>Search Books</h2>
 <form action="/books" method="GET">
-    <div>
-        <label>Title</label>
-        <input type="text" name="title" value="<%= searchObject.title%>">
+    <div class="form-row">
+        <div class="form-item">
+            <label>Title</label>
+            <input type="text" name="title" value="<%= searchObject.title%>">
+        </div>
+        <div class="form-item">
+            <label>Published After</label>
+            <input type="date" name="publishedAfter" value="<%= searchObject.publishedAfter%>">
+        </div>
+        <div class="form-item">
+            <label>Published Before</label>
+            <input type="date" name="publishedBefore" value="<%= searchObject.publishedBefore%>">
+        </div>
     </div>
-    <div>
-        <label>Published After</label>
-        <input type="date" name="publishedAfter" value="<%= searchObject.publishedAfter%>">
-    </div>
-    <div>
-        <label>Published Before</label>
-        <input type="date" name="publishedBefore" value="<%= searchObject.publishedBefore%>">
-    </div>
-    <button type="submit">Search</button>
+    <button class="btn btn-success" type="submit">Search</button>
+
 </form>
-<br>
 
 <%let j = 0;%>
-<b><label>Total Author: <%= books.length%></label></b>
+<b><label style="float: right; margin-bottom: 5px;">Total Books: <%= books.length%></label></b>
 
 <table style="margin-top:10px">
     <tr>
@@ -35,7 +37,13 @@
             <div class="author-row">
                 <td style="width: 5%;"><%=j%></td>
                 <div class="author-name">
-                    <td><%= book.title%></td>
+                    <td>
+                        <div class="form-row">
+                            <img style="height: 45px; width: 35px; margin-top: 10px" src="<%= book.coverImagePath%>">
+                            <div style="margin-top: 15px; margin-left: 15px;"> <%= book.title%>
+                            </div>
+                        </div>
+                    </td>
                 </div>
                 <td style="width: 25%;">
                     <% authors.forEach(author => { %>
@@ -59,20 +67,3 @@
 
 
 </table>
-
-
-<!-- <div>
-    <label><b>Total: <%= books.length%> books</b></label><br>
-    <%let i = 0;%>
-    <% books.forEach(book => { %>
-    <%i++%>
-    <div class="book-row">
-        <center>
-            <a href="/books/<%= book.id%>"><%= book.title%>
-                <img src="<%= book.coverImagePath%>">
-            </a>
-            <label>Publish Date: <%=  book.publishDate.toISOString().split('T')[0]%></label>
-        </center>
-    </div>
-    <%})%>
-</div> -->

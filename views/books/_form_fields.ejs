@@ -1,37 +1,57 @@
-<div>
-    <label>Title</label>
-    <input type="text" name="title" value="<%= book.title %>">
-</div>
-<div>
-    <label>Author</label>
-    <select name="author">
-        <% authors.forEach(author => { %>
-        <% if(author.id == book.author){%>
-        <option selected label="<%= author.name%>" value="<%= author.id%>"></option>
-        <%} else {%>
-        <option label="<%= author.name%>" value="<%= author.id%>"></option>
-        <%}%>
-<%})%>
-    </select>
-</div>
-<div>
-    <label>Publish Date</label>
-    <input type="date" name="publishDate"
-        value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>">
-</div>
-<div>
-    <label>Page Count</label>
-    <input type="number" name="pageCount" value="<%= book.pageCount%>" min="1">
-</div>
-<div>
-    <div>
-        <label>Current Cover</label>
-        <img src="<%= book.coverImagePath%>"><br>
+<div class="form-row">
+    <div class="form-item">
+        <label>Title</label>
+        <input type="text" name="title" value="<%= book.title %>">
     </div>
-    <label>New Cover</label>
-    <input type="file" name="cover" class="filepond">
+    <div class="form-item">
+        <label>Author</label>
+        <select name="author">
+            <% authors.forEach(author => { %>
+            <% if(author.id == book.author){%>
+            <option selected label="<%= author.name%>" value="<%= author.id%>"></option>
+            <%} else {%>
+            <option label="<%= author.name%>" value="<%= author.id%>"></option>
+            <%}%>
+        <%})%>
+        </select>
+    </div>
 </div>
-<div>
-    <label>Description</label>
-    <textarea name="description"><%= book.description%></textarea>
+
+<div class="form-row">
+    <div class="form-item">
+        <label>Publish Date</label>
+        <input type="date" name="publishDate"
+            value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>">
+    </div>
+    <div class="form-item">
+        <label>Page Count</label>
+        <input type="number" name="pageCount" value="<%= book.pageCount%>" min="1">
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-item form-item-no-grow">
+        <%if(book.coverImagePath != null){%>
+        <div class="form-row">
+            <div class="form-item">
+                <label>Current Cover</label>
+                <img style="max-width: 260px;" src="<%= book.coverImagePath%>"><br>
+            </div>
+            <div class="form-item">
+                <label>New Cover</label>
+                <input type="file" name="cover" class="filepond">
+            </div>
+        </div>
+        <%} else {%>
+        <div class="form-item">
+            <label>New Cover</label>
+            <input type="file" name="cover" class="filepond">
+        </div>
+        <%}%>
+        
+    </div>
+    <div class="form-item">
+        <label>Description</label>
+        <textarea name="description"><%= book.description%></textarea>
+    </div>
 </div>
