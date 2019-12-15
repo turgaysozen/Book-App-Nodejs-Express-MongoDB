@@ -12,7 +12,7 @@ router.get('/login', (req, res) => {
     if (req.isAuthenticated()) {
         res.redirect('/');
     }
-    else res.render('users/login');
+    else res.render('users/login', { email: req.body.email });
 });
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/users/login', failureFlash: true, session: true }),
@@ -21,7 +21,7 @@ router.post('/login', passport.authenticate('local', { failureRedirect: '/users/
             let books = await Book.find().sort({ createdAt: 'desc' }).exec();
             res.render('index', { name: req.user.name, books: books });
         }
-        else res.render('users/login');
+        else res.render('users/login', { errorMessage: 'Error Login !' });
     });
 
 router.get('/register', (req, res) => {
@@ -31,9 +31,7 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
     try {
-
-        //TODO 
-        if (User.findOne({ email: req.body.email }) != null) {
+        if (await User.findOne({ email: req.body.email }) != null) {
             res.render('users/register', {
                 errorMessage: 'This Email address already registered !',
             });
@@ -48,7 +46,7 @@ router.post('/register', async (req, res) => {
                     password: hashedPassword,
                 });
                 await user.save();
-                res.redirect('login');
+                res.render('users/login', {successMessage: 'Register Success', email : req.body.email});
             }
         }
     } catch  {
@@ -71,20 +69,37 @@ router.get('/forget', (req, res) => {
     res.render('users/forget');
 });
 
-
-router.post('/', async (req, res) => {
+router.post('/forget', async (req, res) => {
     try {
-        // TODO
-        if (User.find({ email: req.body.email })) {
-            console.log('match');
-            res.render('changepassword', { email: req.body.email });
+        if (await User.findOne({ email: req.body.email })) {
+            res.render('users/resetpsw', { email: req.body.email });
         }
         else {
-            console.log('Not match');
             res.render('users/forget', { errorMessage: 'There is no email address like ' + req.body.email });
         }
     } catch  {
         res.redirect('users/login');
+    }
+});
+
+router.get('/users/resetpsw', (req, res) => {
+    res.render('users/resetpsw', { email: req.body.email });
+});
+
+router.post('/resetpsw', async (req, res) => {
+    try {
+        if (req.body.password == req.body.repassword) {
+            let existUser = await User.findOne({ email: req.body.email });
+            let newPsw = await bcrypt.hash(req.body.password, 10);
+            existUser.password = newPsw;
+            await existUser.save();
+            res.render('users/login', { successMessage: 'Password Change Success !', email: req.body.email });
+        }
+        else {
+            res.render('users/resetpsw', { errorMessage: 'Passwords are not match', email: req.body.email });
+        }
+    } catch {
+        res.redirect('/users/forget');
     }
 });
 

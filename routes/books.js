@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     let searchObject = Book.find()
     if (req.query.title != null && req.query.title !== '') {
         //query = query.regex('title', new Regex(req.query.title, 'i'));
-        searchObject.title = new RegExp(req.query.title, 'i');
+        searchObject.title = searchObject.regex('title', new RegExp(req.query.title, 'i'));
     }
     if (req.query.publishedBefore != null && req.query.publishedBefore != '') {
         searchObject.publishedBefore = searchObject.lte('publishDate', req.query.publishedBefore);

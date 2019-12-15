@@ -1,10 +1,10 @@
 # Summary
 
-Date : 2019-12-14 21:06:16
+Date : 2019-12-15 05:32:32
 
 Directory a:\Javascripts Excercise\NodeJS
 
-Total : 38 files,  2699 codes, 57 comments, 158 blanks, all 2914 lines
+Total : 40 files,  2757 codes, 66 comments, 173 blanks, all 2996 lines
 
 [details](details.md)
 
@@ -12,25 +12,25 @@ Total : 38 files,  2699 codes, 57 comments, 158 blanks, all 2914 lines
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
 | JSON | 2 | 1,510 | 0 | 2 | 1,512 |
-| JavaScript | 10 | 506 | 31 | 64 | 601 |
-| HTML | 17 | 373 | 16 | 31 | 420 |
+| JavaScript | 10 | 541 | 32 | 74 | 647 |
+| HTML | 19 | 396 | 24 | 36 | 456 |
 | CSS | 9 | 310 | 10 | 61 | 381 |
 
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 38 | 2,699 | 57 | 158 | 2,914 |
+| . | 40 | 2,757 | 66 | 173 | 2,996 |
 | models | 3 | 78 | 0 | 10 | 88 |
 | public | 10 | 332 | 10 | 67 | 409 |
 | public\javascripts | 1 | 22 | 0 | 6 | 28 |
 | public\stylesheets | 9 | 310 | 10 | 61 | 381 |
 | public\stylesheets\shared | 8 | 271 | 10 | 49 | 330 |
-| routes | 4 | 338 | 30 | 34 | 402 |
-| views | 17 | 373 | 16 | 31 | 420 |
-| views\authors | 5 | 116 | 15 | 6 | 137 |
-| views\books | 5 | 148 | 0 | 12 | 160 |
+| routes | 4 | 374 | 29 | 41 | 444 |
+| views | 19 | 396 | 24 | 36 | 456 |
+| views\authors | 5 | 118 | 14 | 3 | 135 |
+| views\books | 5 | 150 | 6 | 13 | 169 |
 | views\layouts | 1 | 27 | 0 | 7 | 34 |
-| views\partials | 3 | 27 | 1 | 0 | 28 |
-| views\users | 2 | 38 | 0 | 6 | 44 |
+| views\partials | 3 | 35 | 4 | 4 | 43 |
+| views\users | 4 | 44 | 0 | 6 | 50 |
 
 [details](details.md)

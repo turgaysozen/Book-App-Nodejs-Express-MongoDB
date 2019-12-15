@@ -1,10 +1,10 @@
 # Details
 
-Date : 2019-12-14 21:06:16
+Date : 2019-12-15 05:32:32
 
 Directory a:\Javascripts Excercise\NodeJS
 
-Total : 38 files,  2699 codes, 57 comments, 158 blanks, all 2914 lines
+Total : 40 files,  2757 codes, 66 comments, 173 blanks, all 2996 lines
 
 [summary](results.md)
 
@@ -27,26 +27,28 @@ Total : 38 files,  2699 codes, 57 comments, 158 blanks, all 2914 lines
 | [public\stylesheets\shared\header.css](file:///a%3A/Javascripts%20Excercise/NodeJS/public/stylesheets/shared/header.css) | CSS | 41 | 0 | 7 | 48 |
 | [public\stylesheets\shared\table.css](file:///a%3A/Javascripts%20Excercise/NodeJS/public/stylesheets/shared/table.css) | CSS | 15 | 0 | 5 | 20 |
 | [public\stylesheets\shared\variables.css](file:///a%3A/Javascripts%20Excercise/NodeJS/public/stylesheets/shared/variables.css) | CSS | 5 | 0 | 1 | 6 |
-| [routes\authors.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/authors.js) | JavaScript | 114 | 4 | 10 | 128 |
-| [routes\books.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/books.js) | JavaScript | 143 | 4 | 10 | 157 |
-| [routes\index.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/index.js) | JavaScript | 26 | 0 | 3 | 29 |
-| [routes\users.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/users.js) | JavaScript | 55 | 22 | 11 | 88 |
-| [server.js](file:///a%3A/Javascripts%20Excercise/NodeJS/server.js) | JavaScript | 40 | 1 | 10 | 51 |
+| [routes\authors.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/authors.js) | JavaScript | 122 | 8 | 13 | 143 |
+| [routes\books.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/books.js) | JavaScript | 153 | 4 | 13 | 170 |
+| [routes\index.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/index.js) | JavaScript | 22 | 0 | 2 | 24 |
+| [routes\users.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/users.js) | JavaScript | 77 | 17 | 13 | 107 |
+| [server.js](file:///a%3A/Javascripts%20Excercise/NodeJS/server.js) | JavaScript | 39 | 3 | 13 | 55 |
 | [views\authors\_form_fields.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/authors/_form_fields.ejs) | HTML | 4 | 0 | 0 | 4 |
 | [views\authors\edit.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/authors/edit.ejs) | HTML | 7 | 0 | 0 | 7 |
-| [views\authors\index.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/authors/index.ejs) | HTML | 73 | 15 | 5 | 93 |
+| [views\authors\index.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/authors/index.ejs) | HTML | 75 | 14 | 2 | 91 |
 | [views\authors\new.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/authors/new.ejs) | HTML | 6 | 0 | 0 | 6 |
 | [views\authors\view.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/authors/view.ejs) | HTML | 26 | 0 | 1 | 27 |
 | [views\books\_form_fields.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/books/_form_fields.ejs) | HTML | 54 | 0 | 3 | 57 |
 | [views\books\edit.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/books/edit.ejs) | HTML | 7 | 0 | 0 | 7 |
-| [views\books\index.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/books/index.ejs) | HTML | 61 | 0 | 8 | 69 |
-| [views\books\new.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/books/new.ejs) | HTML | 7 | 0 | 0 | 7 |
+| [views\books\index.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/books/index.ejs) | HTML | 61 | 6 | 9 | 76 |
+| [views\books\new.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/books/new.ejs) | HTML | 9 | 0 | 0 | 9 |
 | [views\books\view.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/books/view.ejs) | HTML | 19 | 0 | 1 | 20 |
-| [views\index.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/index.ejs) | HTML | 17 | 0 | 0 | 17 |
+| [views\index.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/index.ejs) | HTML | 22 | 0 | 3 | 25 |
 | [views\layouts\layout.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/layouts/layout.ejs) | HTML | 27 | 0 | 7 | 34 |
-| [views\partials\deleteForm.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/partials/deleteForm.ejs) | HTML | 3 | 0 | 0 | 3 |
+| [views\partials\deleteForm.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/partials/deleteForm.ejs) | HTML | 7 | 0 | 0 | 7 |
 | [views\partials\errorMessage.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/partials/errorMessage.ejs) | HTML | 5 | 0 | 0 | 5 |
-| [views\partials\header.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/partials/header.ejs) | HTML | 19 | 1 | 0 | 20 |
+| [views\partials\header.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/partials/header.ejs) | HTML | 23 | 4 | 4 | 31 |
+| [views\users\changepassword.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/users/changepassword.ejs) | HTML | 1 | 0 | 0 | 1 |
+| [views\users\forget.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/users/forget.ejs) | HTML | 5 | 0 | 0 | 5 |
 | [views\users\login.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/users/login.ejs) | HTML | 20 | 0 | 3 | 23 |
 | [views\users\register.ejs](file:///a%3A/Javascripts%20Excercise/NodeJS/views/users/register.ejs) | HTML | 18 | 0 | 3 | 21 |
 

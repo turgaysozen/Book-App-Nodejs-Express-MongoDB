@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
             searchObject: req.query,
             books: books,
             singleauthor: new Author,
-            name : req.isAuthenticated() == true ? req.user.name: null
+            name: req.isAuthenticated() == true ? req.user.name : null
         });
     } catch {
         res.redirect('/');
@@ -44,8 +44,24 @@ router.post('/', async (req, res) => {
 
     try {
         await author.save();
-        //res.redirect(`/authors/${author.id}`);
-        res.redirect('/authors');
+        const authors = await Author.find();
+        const books = await Book.find();
+        authors.forEach(author => {
+            books.forEach(book => {
+                if (author.id == book.author) {
+                    author.book = true;
+                }
+            });
+        });
+        res.render('authors',
+            {
+                successMessage: 'Creating Author Success !',
+                singleauthor: '',
+                searchObject: null,
+                authors: authors,
+                books: books,
+                name: req.isAuthenticated() == true ? req.user.name : null
+            });
 
     } catch  {
         const authors = await Author.find();
@@ -63,7 +79,7 @@ router.post('/', async (req, res) => {
             searchObject: null,
             authors: authors,
             books: books,
-            name : req.isAuthenticated() == true ? req.user.name: null
+            name: req.isAuthenticated() == true ? req.user.name : null
         });
     }
 });
@@ -76,7 +92,7 @@ router.get('/:id', async (req, res) => {
         res.render('authors/view', {
             author: author,
             booksByAuthor: books,
-            name : req.isAuthenticated() == true ? req.user.name: null
+            name: req.isAuthenticated() == true ? req.user.name : null
 
         });
     } catch {
@@ -86,14 +102,14 @@ router.get('/:id', async (req, res) => {
 
 // view selected author 
 router.get('/:id/edit', async (req, res) => {
-    if(req.isAuthenticated() != true){
-return res.redirect('/');
+    if (req.isAuthenticated() != true) {
+        return res.redirect('/');
     }
     const author = await Author.findById(req.params.id);
     try {
         res.render('authors/edit', {
             singleauthor: author,
-            name : req.isAuthenticated() == true ? req.user.name: null
+            name: req.isAuthenticated() == true ? req.user.name : null
 
         });
     } catch  {
@@ -108,7 +124,15 @@ router.put('/:id', async (req, res) => {
         author = await Author.findById(req.params.id);
         author.name = req.body.name;
         await author.save();
-        res.redirect(`/authors/${author.id}`);
+
+        author = await Author.findById(req.params.id);
+        const books = await Book.find({ author: author.id }).exec();
+        res.render('authors/view', {
+            author: author,
+            booksByAuthor: books,
+            successMessage: 'Success Updating Author',
+            name: req.isAuthenticated() == true ? req.user.name : null,
+        });
     } catch  {
         if (author == null) {
             res.redirect('/');
@@ -117,7 +141,7 @@ router.put('/:id', async (req, res) => {
             res.render('authors/edit', {
                 singleauthor: author,
                 errorMessage: 'Error Updating Author',
-                name : req.isAuthenticated() == true ? req.user.name: null
+                name: req.isAuthenticated() == true ? req.user.name : null
 
             });
         }
@@ -130,7 +154,27 @@ router.delete('/:id', async (req, res) => {
         const author = await Author.findById(req.params.id);
         if (author != null) {
             author.remove();
-            res.redirect('/authors');
+            console.log('qaqaqaqq')
+
+            await author.save();
+            authors = await Author.find();
+            const books = await Book.find();
+            authors.forEach(author => {
+                books.forEach(book => {
+                    if (author.id == book.author) {
+                        author.book = true;
+                    }
+                });
+            });
+            res.render('authors',
+                {
+                    successMessage: 'Author Deleting Success !',
+                    singleauthor: '',
+                    searchObject: null,
+                    authors: authors,
+                    books: books,
+                    name: req.isAuthenticated() == true ? req.user.name : null
+                });
         }
     } catch  {
         if (author != null) {

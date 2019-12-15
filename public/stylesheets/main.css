@@ -49,3 +49,13 @@ font-size:1.5rem;
     text-align: center;
     padding-top: 5px;
 }
+
+.successMessage{
+    width: 350px;
+    height: 40px;
+    background-color: rgb(21, 230, 2);
+    border-radius: .3rem;
+    font-size: 1.2rem;
+    text-align: center;
+    padding-top: 5px;
+}

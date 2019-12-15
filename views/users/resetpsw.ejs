@@ -1,0 +1,17 @@
+<form action="/users/resetpsw" method="POST">
+    <div class="form-container">
+      <h1>Reset Password</h1>
+      <hr>
+      <input readonly="readonly" type="text" placeholder="<%= email%>" value="<%= email%>" name="email">
+      <label for="email"><b>Email</b></label>
+      <input type="password" placeholder="Enter New Password" name="password" required>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter New Password Again" name="repassword" required>
+      <hr>
+      <button type="submit" class="registerbtn">Reset</button>
+    </div>
+    
+    <div class="container signin">
+      <p>Already have an account? <a href="/users/login">Sign in</a>.</p>
+    </div>
+  </form>

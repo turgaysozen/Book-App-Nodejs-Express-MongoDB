@@ -4,10 +4,13 @@
                 <h2 style="color:red"><%=author.name%></h2>
                 <a style="height: 35px; margin-top: 20px; margin-left:20px" class="btn btn-primary" href="/authors/<%= author.id%>/edit">Edit</a>
    </div>
-    <%if(booksByAuthor.length == 0){%>
-    <%- include('../partials/deleteForm',
-                {url: `/authors/${author.id}`})%>
-    <%}%>
+
+   <div style="margin-top:22px">
+        <%if(booksByAuthor.length == 0){%>
+            <%- include('../partials/deleteForm',
+                        {url: `/authors/${author.id}`})%>
+            <%}%>
+   </div>
     </div>
 
 <div>

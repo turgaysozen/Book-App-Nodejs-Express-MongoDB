@@ -7,7 +7,6 @@ function initialize(passport) {
     const authenticateUser = async (email, password, done) => {
 
         newUser = await User.findOne({ email: email });
-        console.log(newUser)
         id = newUser != null ? newUser.id : null;
         if (newUser == null) {
             return done(null, false, { message: 'No user with that email address' });
