@@ -75,7 +75,7 @@ router.post('/forget', async (req, res) => {
             res.render('users/resetpsw', { email: req.body.email });
         }
         else {
-            res.render('users/forget', { errorMessage: 'There is no email address like ' + req.body.email });
+            res.render('users/forget', { errorMessage: 'There is no email address like that'});
         }
     } catch  {
         res.redirect('users/login');

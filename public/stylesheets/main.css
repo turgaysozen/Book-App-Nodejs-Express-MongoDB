@@ -41,7 +41,7 @@ font-size:1.5rem;
  }
  
 .errorMessage{
-    width: 350px;
+    width: 450px;
     height: 40px;
     background-color: rgb(240, 92, 92);
     border-radius: .3rem;

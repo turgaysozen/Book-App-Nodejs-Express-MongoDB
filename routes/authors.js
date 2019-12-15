@@ -154,27 +154,26 @@ router.delete('/:id', async (req, res) => {
         const author = await Author.findById(req.params.id);
         if (author != null) {
             author.remove();
-            console.log('qaqaqaqq')
-
             await author.save();
-            authors = await Author.find();
-            const books = await Book.find();
-            authors.forEach(author => {
-                books.forEach(book => {
-                    if (author.id == book.author) {
-                        author.book = true;
-                    }
-                });
-            });
-            res.render('authors',
-                {
-                    successMessage: 'Author Deleting Success !',
-                    singleauthor: '',
-                    searchObject: null,
-                    authors: authors,
-                    books: books,
-                    name: req.isAuthenticated() == true ? req.user.name : null
-                });
+            // authors = await Author.find();
+            // const books = await Book.find();
+            // authors.forEach(author => {
+            //     books.forEach(book => {
+            //         if (author.id == book.author) {
+            //             author.book = true;
+            //         }
+            //     });
+            // });
+            // res.render('authors',
+            //     {
+            //         successMessage: 'Author Deleting Success !',
+            //         singleauthor: '',
+            //         searchObject: null,
+            //         authors: authors,
+            //         books: books,
+            //         name: req.isAuthenticated() == true ? req.user.name : null
+            //     });
+            res.redirect('/authors');
         }
     } catch  {
         if (author != null) {
