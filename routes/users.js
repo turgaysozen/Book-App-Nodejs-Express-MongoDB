@@ -62,7 +62,6 @@ router.delete('/logout', (req, res) => {
         res.redirect('/');
     }
     else res.redirect('/users/login');
-
 });
 
 router.get('/forget', (req, res) => {
