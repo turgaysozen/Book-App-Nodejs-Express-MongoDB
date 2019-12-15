@@ -18,21 +18,24 @@ router.get('/', async (req, res) => {
         searchObject.publishedAfter = searchObject.gte('publishDate', req.query.publishedAfter);
     }
     try {
-        const books = await Book.find(searchObject).sort({ createdAt: 'desc' }).limit(50).exec();
+        const books = await Book.find(searchObject).sort({ createdAt: 'desc' }).exec();
         const authors = await Author.find();
         res.render('books/index', {
             books: books,
             searchObject: req.query,
-            authors: authors
+            authors: authors,
+            name: req.user != null ? req.user.name : null,
         });
     } catch{
         res.redirect('/');
     }
 });
 
-// New book route
+// New book route  
 router.get('/new', async (req, res) => {
-    renderNewPage(res, new Book());
+    renderNewPage(req, res, new Book()), {
+        name: req.user != null ? req.user.name : null
+    };
 });
 
 // Create new book
@@ -50,31 +53,38 @@ router.post('/', async (req, res) => {
         res.redirect('books');
     }
     catch{
-        renderNewPage(res, book, true);
+        renderNewPage(req, res, book, true);
     }
 });
 
 router.get('/:id', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id);
-        const author = await Author.findById(book.author);  
+        const author = await Author.findById(book.author);
         res.render('books/view', {
             book: book,
             author: author,
+            name : req.isAuthenticated() == true ? req.user.name: null
+
         });
-    } catch (err) {
-        console.log(err)
+    } catch {
         res.redirect('/books');
     }
 });
 
 router.get('/:id/edit', async (req, res) => {
     try {
+        let d = new Date();
+        let date = d.toLocaleDateString().split('/');
+        let strDate = date[2] + '-' + date[0] + '-' + date[1];
         const book = await Book.findById(req.params.id);
         const authors = await Author.find();
         res.render('books/edit', {
             book: book,
             authors: authors,
+            date: strDate,
+            name : req.isAuthenticated() == true ? req.user.name: null
+
         });
     } catch  {
         res.redirect('/books');
@@ -97,7 +107,9 @@ router.put('/:id', async (req, res) => {
         const author = await Author.findById(book.author);
         res.render('books/view', {
             book: book,
-            author: author
+            author: author,
+            name : req.isAuthenticated() == true ? req.user.name: null
+
         });
     } catch {
         res.redirect('/books');
@@ -123,17 +135,22 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-async function renderNewPage(res, book, hasError = false) {
+async function renderNewPage(req, res, book, hasError = false) {
+    let d = new Date();
+    let date = d.toLocaleDateString().split('/');
+    let strDate = date[2] + '-' + date[0] + '-' + date[1];
     try {
         let authors = await Author.find({});
         let params = {
             authors: authors,
             book: book,
+            date: strDate,
+            name: req.user != null ? req.user.name : null,
         }
         if (hasError) params.errorMessage = 'Error Creating Book';
         res.render('books/new', params);
     }
-    catch{
+    catch (e){
         res.redirect('/books');
     }
 }

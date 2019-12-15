@@ -17,7 +17,7 @@
     <%i++%>
     <div class="book-row">
         <center>
-            <a href="/books/<%= book.id%>"><%= book.title%>
+            <a href="/books/<%= book.id%>"><%= book.title.length > 10 ? book.title.substring(0,10) + '...' : book.title %>
                 <img src="<%= book.coverImagePath%>">
             </a>
             <label>Publish Date: <%=  book.publishDate.toISOString().split('T')[0]%></label>

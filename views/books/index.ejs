@@ -58,6 +58,13 @@
                         <a class="btn btn-primary" href="/books/<%= book.id%>">View</a>
                         <a class="btn btn-primary" href="/books/<%= book.id%>/edit">Edit</a>
                         <%- include('../partials/deleteForm', { url: `/books/${ book.id}`})%>
+
+                        <!-- <%if(locals.name != null){%>
+                        <%- include('../partials/deleteForm', { url: `/books/${ book.id}`})%>
+                        <%} else {%>
+                            <button class="btn btn-danger" title="Login to delete this book"
+                            disabled type="button">Delete</button>
+                            <%}%> -->
                     </div>
                 </td>
             </div>

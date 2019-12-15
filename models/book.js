@@ -34,7 +34,6 @@ const bookShema = new mongoose.Schema({
         required: true,
         ref: 'Author'
     },
-
 });
 
 bookShema.virtual('coverImagePath').get(function () {

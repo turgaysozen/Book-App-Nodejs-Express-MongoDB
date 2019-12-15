@@ -1,7 +1,9 @@
+<%if(locals.name != null){%>
 <h2>New Book</h2>
 <form action="/books" method="POST">
     <a class="btn btn-danger" href="/books">Cancel</a>
-<button class="btn btn-primary" type="submit">Create</button>
-<hr>
+    <button class="btn btn-primary" type="submit">Create</button>
+    <hr>
     <%- include('_form_fields') %>
 </form>
+<%}%>

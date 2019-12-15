@@ -20,7 +20,7 @@
 <div class="form-row">
     <div class="form-item">
         <label>Publish Date</label>
-        <input type="date" name="publishDate"
+        <input type="date" name="publishDate" max="<%= date %>" 
             value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>">
     </div>
     <div class="form-item">
@@ -35,7 +35,7 @@
         <div class="form-row">
             <div class="form-item">
                 <label>Current Cover</label>
-                <img style="max-width: 260px;" src="<%= book.coverImagePath%>"><br>
+                <img style="max-width: 200px; height: 270px;" src="<%= book.coverImagePath%>"><br>
             </div>
             <div class="form-item">
                 <label>New Cover</label>

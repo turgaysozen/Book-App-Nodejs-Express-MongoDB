@@ -4,13 +4,21 @@ const Book = require('../models/book');
 
 router.get('/', async (req, res) => {
     let books = [];
-    try{
-        books = await Book.find().sort({createdAt: 'desc'}).exec();
+    try {
+        books = await Book.find().sort({ createdAt: 'desc' }).exec();
+        if (req.isAuthenticated()) {
+            res.render('index', {
+                books: books, name: req.user.name,
+            });
+        } else {
+            res.render('index', {
+                books: books,
+            });
+        }
     }
     catch{
         books = [];
     }
-    res.render('index', {books: books});
 });
 
 module.exports = router;

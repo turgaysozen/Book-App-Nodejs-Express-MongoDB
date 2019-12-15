@@ -2,6 +2,7 @@ if(process.env.NODE_ENV !== 'production')
 require('dotenv').config({path:'.env'});
 
 const express = require('express');
+
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
@@ -9,8 +10,13 @@ const methodOverride = require('method-override');
 
 const indexRouter = require('./routes/index');
 const authorRouter = require('./routes/authors'); 
-const bookRouter = require('./routes/books')
+const bookRouter = require('./routes/books');
+const userRouter = require('./routes/users');
 
+const flash = require('express-flash');
+const session = require('express-session'); 
+const passport = require('passport');
+// console.log("**Express Version: ", require('express/package').version);
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout');
@@ -19,15 +25,31 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false}));
 
-
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true});
 const db = mongoose.connection;
+
 db.on('error',error => console.error(error));
 db.once('open',() => console.log('Connected to Mongoose'));
+
+app.use(flash());
+app.use(session({
+    // // secret: 'keyboard cat',
+
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    // cookie: { secure: true }
+
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/authors', authorRouter);
 app.use('/books', bookRouter);
+app.use('/users', userRouter);
 
 app.listen(process.env.PORT || 3000);
+
+

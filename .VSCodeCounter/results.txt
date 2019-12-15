@@ -1,0 +1,77 @@
+Date : 2019-12-14 21:06:15
+Directory : a:\Javascripts Excercise\NodeJS
+Total : 38 files,  2699 codes, 57 comments, 158 blanks, all 2914 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          2 |      1,510 |          0 |          2 |      1,512 |
+| JavaScript |         10 |        506 |         31 |         64 |        601 |
+| HTML       |         17 |        373 |         16 |         31 |        420 |
+| CSS        |          9 |        310 |         10 |         61 |        381 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                    | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                       |         38 |      2,699 |         57 |        158 |      2,914 |
+| models                                                                  |          3 |         78 |          0 |         10 |         88 |
+| public                                                                  |         10 |        332 |         10 |         67 |        409 |
+| public\javascripts                                                      |          1 |         22 |          0 |          6 |         28 |
+| public\stylesheets                                                      |          9 |        310 |         10 |         61 |        381 |
+| public\stylesheets\shared                                               |          8 |        271 |         10 |         49 |        330 |
+| routes                                                                  |          4 |        338 |         30 |         34 |        402 |
+| views                                                                   |         17 |        373 |         16 |         31 |        420 |
+| views\authors                                                           |          5 |        116 |         15 |          6 |        137 |
+| views\books                                                             |          5 |        148 |          0 |         12 |        160 |
+| views\layouts                                                           |          1 |         27 |          0 |          7 |         34 |
+| views\partials                                                          |          3 |         27 |          1 |          0 |         28 |
+| views\users                                                             |          2 |         38 |          0 |          6 |         44 |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| a:\Javascripts Excercise\NodeJS\models\author.js                        | JavaScript |         20 |          0 |          5 |         25 |
+| a:\Javascripts Excercise\NodeJS\models\book.js                          | JavaScript |         42 |          0 |          4 |         46 |
+| a:\Javascripts Excercise\NodeJS\models\user.js                          | JavaScript |         16 |          0 |          1 |         17 |
+| a:\Javascripts Excercise\NodeJS\package-lock.json                       | JSON       |      1,480 |          0 |          1 |      1,481 |
+| a:\Javascripts Excercise\NodeJS\package.json                            | JSON       |         30 |          0 |          1 |         31 |
+| a:\Javascripts Excercise\NodeJS\passport-config.js                      | JavaScript |         28 |          0 |          4 |         32 |
+| a:\Javascripts Excercise\NodeJS\public\javascripts\fileUpload.js        | JavaScript |         22 |          0 |          6 |         28 |
+| a:\Javascripts Excercise\NodeJS\public\stylesheets\main.css             | CSS        |         39 |          0 |         12 |         51 |
+| a:\Javascripts Excercise\NodeJS\public\stylesheets\shared\author.css    | CSS        |          8 |          0 |          1 |          9 |
+| a:\Javascripts Excercise\NodeJS\public\stylesheets\shared\book.css      | CSS        |         37 |          0 |          4 |         41 |
+| a:\Javascripts Excercise\NodeJS\public\stylesheets\shared\button.css    | CSS        |         30 |          0 |          9 |         39 |
+| a:\Javascripts Excercise\NodeJS\public\stylesheets\shared\fonts.css     | CSS        |         56 |          0 |          9 |         65 |
+| a:\Javascripts Excercise\NodeJS\public\stylesheets\shared\form.css      | CSS        |         79 |         10 |         13 |        102 |
+| a:\Javascripts Excercise\NodeJS\public\stylesheets\shared\header.css    | CSS        |         41 |          0 |          7 |         48 |
+| a:\Javascripts Excercise\NodeJS\public\stylesheets\shared\table.css     | CSS        |         15 |          0 |          5 |         20 |
+| a:\Javascripts Excercise\NodeJS\public\stylesheets\shared\variables.css | CSS        |          5 |          0 |          1 |          6 |
+| a:\Javascripts Excercise\NodeJS\routes\authors.js                       | JavaScript |        114 |          4 |         10 |        128 |
+| a:\Javascripts Excercise\NodeJS\routes\books.js                         | JavaScript |        143 |          4 |         10 |        157 |
+| a:\Javascripts Excercise\NodeJS\routes\index.js                         | JavaScript |         26 |          0 |          3 |         29 |
+| a:\Javascripts Excercise\NodeJS\routes\users.js                         | JavaScript |         55 |         22 |         11 |         88 |
+| a:\Javascripts Excercise\NodeJS\server.js                               | JavaScript |         40 |          1 |         10 |         51 |
+| a:\Javascripts Excercise\NodeJS\views\authors\_form_fields.ejs          | HTML       |          4 |          0 |          0 |          4 |
+| a:\Javascripts Excercise\NodeJS\views\authors\edit.ejs                  | HTML       |          7 |          0 |          0 |          7 |
+| a:\Javascripts Excercise\NodeJS\views\authors\index.ejs                 | HTML       |         73 |         15 |          5 |         93 |
+| a:\Javascripts Excercise\NodeJS\views\authors\new.ejs                   | HTML       |          6 |          0 |          0 |          6 |
+| a:\Javascripts Excercise\NodeJS\views\authors\view.ejs                  | HTML       |         26 |          0 |          1 |         27 |
+| a:\Javascripts Excercise\NodeJS\views\books\_form_fields.ejs            | HTML       |         54 |          0 |          3 |         57 |
+| a:\Javascripts Excercise\NodeJS\views\books\edit.ejs                    | HTML       |          7 |          0 |          0 |          7 |
+| a:\Javascripts Excercise\NodeJS\views\books\index.ejs                   | HTML       |         61 |          0 |          8 |         69 |
+| a:\Javascripts Excercise\NodeJS\views\books\new.ejs                     | HTML       |          7 |          0 |          0 |          7 |
+| a:\Javascripts Excercise\NodeJS\views\books\view.ejs                    | HTML       |         19 |          0 |          1 |         20 |
+| a:\Javascripts Excercise\NodeJS\views\index.ejs                         | HTML       |         17 |          0 |          0 |         17 |
+| a:\Javascripts Excercise\NodeJS\views\layouts\layout.ejs                | HTML       |         27 |          0 |          7 |         34 |
+| a:\Javascripts Excercise\NodeJS\views\partials\deleteForm.ejs           | HTML       |          3 |          0 |          0 |          3 |
+| a:\Javascripts Excercise\NodeJS\views\partials\errorMessage.ejs         | HTML       |          5 |          0 |          0 |          5 |
+| a:\Javascripts Excercise\NodeJS\views\partials\header.ejs               | HTML       |         19 |          1 |          0 |         20 |
+| a:\Javascripts Excercise\NodeJS\views\users\login.ejs                   | HTML       |         20 |          0 |          3 |         23 |
+| a:\Javascripts Excercise\NodeJS\views\users\register.ejs                | HTML       |         18 |          0 |          3 |         21 |
+| Total                                                                   |            |      2,699 |         57 |        158 |      2,914 |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+

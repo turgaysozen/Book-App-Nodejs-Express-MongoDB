@@ -6,7 +6,7 @@
         <img height="430px" width="320px" src="<%= book.coverImagePath%>"><br>
     </div>
 
-   <div style="padding-right: 530px; max-height: 430px; margin-left: 20px; background-color:rgb(138, 214, 204)" class="form-item">
+   <div style="padding-right: 530px; max-height: 430px; margin-left: 20px; background-color:rgb(72, 235, 100)" class="form-item">
         <label>Author: <b><%= author != null ? author.name : 'No Author' %></b></label>
         <label style="margin-top:10px"><b>Published Date:</b> <%=  book.publishDate.toISOString().split('T')[0]%></label>
         <label style="margin-top:10px;"><b>Description:</b> <%= book.description%></label>

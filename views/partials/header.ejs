@@ -2,10 +2,29 @@
     <nav class="header-nav">
         <a class="header-title" href="/">Book App</a>
         <ul>
+            <% if(locals.name != null) { %>
+
+            <li><a style="background-color: rgb(67, 178, 212); height: 10px;" href="#">Hi
+                    <%= name != null ? name : ''%></a></li>
+            <% } else { %>
+            <li><a href="/users/login">Login</a></li>
+            <%}%>
             <li><a href="/authors">All Authors</a></li>
             <!-- <li><a href="/authors/new">Add Author</a></li> -->
             <li><a href="/books">All Books</a></li>
-            <li><a href="/books/new">Add Book</a></li>
+            <% if(locals.name != null) { %>
+
+            <li>    
+                    <li><a href="/books/new">Add Book</a></li>
+                    <form action="/users/logout?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger" type="submit">Log Out</button>
+                    </form>
+                    <!-- <form action="/users/logout?_method=DELETE" method="POST">
+                        <button class="btn btn-danger" type="submit">Log Out</button>
+                    </form> -->
+            </li>
+            <%}%>
+
         </ul>
     </nav>
 </header>
