@@ -64,7 +64,7 @@ router.get('/:id', async (req, res) => {
         res.render('books/view', {
             book: book,
             author: author,
-            name : req.isAuthenticated() == true ? req.user.name: null
+            name: req.isAuthenticated() == true ? req.user.name : null
 
         });
     } catch {
@@ -73,6 +73,9 @@ router.get('/:id', async (req, res) => {
 });
 
 router.get('/:id/edit', async (req, res) => {
+    if (req.isAuthenticated() != true) {
+        return res.redirect('/');
+    }
     try {
         let d = new Date();
         let date = d.toLocaleDateString().split('/');
@@ -83,7 +86,7 @@ router.get('/:id/edit', async (req, res) => {
             book: book,
             authors: authors,
             date: strDate,
-            name : req.isAuthenticated() == true ? req.user.name: null
+            name: req.isAuthenticated() == true ? req.user.name : null
 
         });
     } catch  {
@@ -108,7 +111,7 @@ router.put('/:id', async (req, res) => {
         res.render('books/view', {
             book: book,
             author: author,
-            name : req.isAuthenticated() == true ? req.user.name: null
+            name: req.isAuthenticated() == true ? req.user.name : null
 
         });
     } catch {
@@ -150,7 +153,7 @@ async function renderNewPage(req, res, book, hasError = false) {
         if (hasError) params.errorMessage = 'Error Creating Book';
         res.render('books/new', params);
     }
-    catch (e){
+    catch (e) {
         res.redirect('/books');
     }
 }

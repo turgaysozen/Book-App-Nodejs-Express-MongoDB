@@ -34,9 +34,8 @@ db.once('open',() => console.log('Connected to Mongoose'));
 
 app.use(flash());
 app.use(session({
-    // // secret: 'keyboard cat',
-
-    secret: process.env.SESSION_SECRET,
+    secret: 'keyboard cat',
+    // secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     // cookie: { secure: true }

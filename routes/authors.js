@@ -86,6 +86,9 @@ router.get('/:id', async (req, res) => {
 
 // view selected author 
 router.get('/:id/edit', async (req, res) => {
+    if(req.isAuthenticated() != true){
+return res.redirect('/');
+    }
     const author = await Author.findById(req.params.id);
     try {
         res.render('authors/edit', {
