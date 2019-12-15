@@ -69,7 +69,7 @@
                 <%renderList += item; %>
                 <%}%>
                 <% })%> -->
-                <td><%= bookL.substring(0, bookL.length - 2).length > 60 ? bookL.substring(0, bookL.length - 2) + '...' : bookL.substring(0, bookL.length - 2) %>
+                <td><%= bookL.substring(0, bookL.length).length > 60 ? bookL.substring(0, 70) + '...' : bookL.substring(0, bookL.length) %>
                 </td>
                 <td style="width:20%">
                     <div class="btn-row">

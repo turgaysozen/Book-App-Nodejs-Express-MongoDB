@@ -89,7 +89,7 @@ router.get('/users/resetpsw', (req, res) => {
 router.post('/resetpsw', async (req, res) => {
     try {
         if (req.body.password == req.body.repassword) {
-            let existUser = await User.findOne({ email: req.body.email });
+            let existUser = await User.findOne({ email: req.body.email }); 
             let newPsw = await bcrypt.hash(req.body.password, 10);
             existUser.password = newPsw;
             await existUser.save();

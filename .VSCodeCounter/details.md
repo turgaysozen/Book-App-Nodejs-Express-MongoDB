@@ -1,10 +1,10 @@
 # Details
 
-Date : 2019-12-15 11:16:25
+Date : 2019-12-15 13:30:26
 
 Directory a:\Javascripts Excercise\NodeJS
 
-Total : 41 files,  2848 codes, 63 comments, 179 blanks, all 3090 lines
+Total : 41 files,  2830 codes, 81 comments, 178 blanks, all 3089 lines
 
 [summary](results.md)
 
@@ -27,7 +27,7 @@ Total : 41 files,  2848 codes, 63 comments, 179 blanks, all 3090 lines
 | [public\stylesheets\shared\header.css](file:///a%3A/Javascripts%20Excercise/NodeJS/public/stylesheets/shared/header.css) | CSS | 41 | 0 | 7 | 48 |
 | [public\stylesheets\shared\table.css](file:///a%3A/Javascripts%20Excercise/NodeJS/public/stylesheets/shared/table.css) | CSS | 15 | 0 | 5 | 20 |
 | [public\stylesheets\shared\variables.css](file:///a%3A/Javascripts%20Excercise/NodeJS/public/stylesheets/shared/variables.css) | CSS | 5 | 0 | 1 | 6 |
-| [routes\authors.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/authors.js) | JavaScript | 165 | 7 | 15 | 187 |
+| [routes\authors.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/authors.js) | JavaScript | 147 | 25 | 14 | 186 |
 | [routes\books.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/books.js) | JavaScript | 153 | 4 | 13 | 170 |
 | [routes\index.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/index.js) | JavaScript | 22 | 0 | 2 | 24 |
 | [routes\users.js](file:///a%3A/Javascripts%20Excercise/NodeJS/routes/users.js) | JavaScript | 94 | 15 | 14 | 123 |

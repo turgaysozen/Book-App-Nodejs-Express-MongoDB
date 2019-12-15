@@ -48,8 +48,10 @@ router.post('/', async (req, res) => {
         description: req.body.description,
     });
     try {
-        saveCover(book, req.body.cover);
-        const newBook = await book.save();
+        for (let index = 1; index < 300; index++) {
+            saveCover(book, req.body.cover);
+            const newBook = await book.save();
+        }
         res.redirect('books');
     }
     catch{
