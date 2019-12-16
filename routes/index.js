@@ -5,7 +5,7 @@ const Book = require('../models/book');
 router.get('/', async (req, res) => {
     let books = [];
     try {
-        books = await Book.find().sort({ createdAt: 'desc' }).limit(18).exec();
+        books = await Book.find().sort({ createdAt: 'desc' }).limit(12).exec();
         if (req.isAuthenticated()) {
             res.render('index', {
                 books: books, name: req.user.name,
