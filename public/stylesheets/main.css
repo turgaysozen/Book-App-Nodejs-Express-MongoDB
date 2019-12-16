@@ -63,5 +63,6 @@ font-size:1.5rem;
 .footer {
     max-width: 1200px;
     margin: auto;
-    height: 100px;
+    height: 30px;
+    margin-top: 20px;
 }

@@ -6,6 +6,7 @@ const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
 //All book route
 router.get('/', async (req, res) => {
+    let page = req.query.page;
     let searchObject = Book.find()
     if (req.query.title != null && req.query.title !== '') {
         //query = query.regex('title', new Regex(req.query.title, 'i'));
@@ -18,13 +19,15 @@ router.get('/', async (req, res) => {
         searchObject.publishedAfter = searchObject.gte('publishDate', req.query.publishedAfter);
     }
     try {
-        const books = await Book.find(searchObject).sort({ createdAt: 'desc' }).exec();
+        const books = await Book.find({}).skip((page - 1) * 25).limit(25);
         const authors = await Author.find();
         res.render('books/index', {
             books: books,
             searchObject: req.query,
             authors: authors,
             name: req.user != null ? req.user.name : null,
+            allBooks: await Book.find(),
+            page: page,
         });
     } catch{
         res.redirect('/');
@@ -48,10 +51,19 @@ router.post('/', async (req, res) => {
         description: req.body.description,
     });
     try {
-        for (let index = 1; index < 300; index++) {
-            saveCover(book, req.body.cover);
-            const newBook = await book.save();
-        }
+        // for (let index = 0; index < 300; index++) {
+        //     const book = new Book({
+        //         title: ((index + 1) + ' - Book').toString(),
+        //         author: req.body.author,
+        //         publishDate: new Date(req.body.publishDate),
+        //         pageCount: req.body.pageCount,
+        //         description: req.body.description,
+        //     });
+        //     saveCover(book, req.body.cover);
+        //     const newBook = await book.save();
+        // }
+        saveCover(book, req.body.cover);
+        const newBook = await book.save();
         res.redirect('books');
     }
     catch{
@@ -124,6 +136,11 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     let book;
     try {
+        // let books = await Book.find({});
+
+        // books.forEach(book => {
+        //     book.remove();
+        // })
         book = await Book.findById(req.params.id);
         if (book != null) {
             await book.remove();
@@ -139,6 +156,16 @@ router.delete('/:id', async (req, res) => {
         }
     }
 });
+
+// router.post('/page/', async (req, res) => {
+//     let page = req.body.page;
+//      const books = await Book.find({}).skip((page - 1) * 50).limit(50);
+//     res.render('books', {
+//         books: books,
+//         allBooks: await Book.find(),
+//         searchObject: null,
+//     });
+// });
 
 async function renderNewPage(req, res, book, hasError = false) {
     let d = new Date();

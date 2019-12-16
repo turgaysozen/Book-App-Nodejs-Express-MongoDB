@@ -5,10 +5,11 @@
 <%}%>
 
 <h2 class="page-header">Recently Added
-
     <label style="float: right; font-size: 16px; margin-top: 30px; margin-right: 15px;"><b>Total: <%= books.length%>
 books</b></label>
 </h2>
+Page: <%=page != null ? page : 1%>
+
 <div>
     <%let i = 0;%>
     <% books.forEach(book => { %>
@@ -25,12 +26,27 @@ books</b></label>
 </div>
 <div>
     <%if(books.length >= 12) {%>
-        <%for(let i = 1; i < 5; i++){%>
+
+    <div>
+        <form action="/" method="GET">
+            <select name="page" class="btn btn-danger">
+            <%for(let j = 0; j < allBooks.length / 12; j++){%>
+            <%let page = j + 1%>
+            <option value="<%=page%>"><%= j + 1%></option>
+            <%}%>
+        </select>
+        <button class="btn btn-primary" type="submit">Go</button>
+        </form>
+    </div>
+    <!-- <%for(let i = 1; i < 5; i++){%>
 
             <a href="#" style="text-decoration: none;">
-                 <button class="btn btn-danger" href="" type="submit" style="font-size: 2rem; margin-top: 40px; margin-left: 20px; width: 50px;"><%=i%></button>
+                <button class="btn btn-danger" href="" type="submit"
+                    style="font-size: 2rem; margin-top: 40px; margin-left: 20px; width: 50px;"><%=i%></button>
             </a>
-         <%}%>
-        <%}%>
-   
+
+
+            <%}%> -->
+    <%}%>
+
     </div>

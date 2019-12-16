@@ -18,8 +18,9 @@ router.get('/login', (req, res) => {
 router.post('/login', passport.authenticate('local', { failureRedirect: '/users/login', failureFlash: true, session: true }),
     async (req, res) => {
         if (req.isAuthenticated()) {
-            let books = await Book.find().sort({ createdAt: 'desc' }).exec();
-            res.render('index', { name: req.user.name, books: books });
+            let books = await Book.find().sort({ createdAt: 'asc' }).exec();
+            // res.render('index', { name: req.user.name, books: books, allBooks: await Book.find() });
+            res.redirect('/');
         }
         else res.render('users/login', { errorMessage: 'Error Login !' });
     });

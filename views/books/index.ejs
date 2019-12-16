@@ -17,8 +17,8 @@
     <button class="btn btn-success" type="submit">Search</button>
 
 </form>
-
-<%let j = 0;%>
+Page: <%= page != null ? page: 1%>
+<%let j = (page != null ? page - 1: 1 - 1) * 25;%>
 <b><label style="float: right; margin-bottom: 5px;">Total Books: <%= books.length%></label></b>
 
 <table style="margin-top:10px">
@@ -74,3 +74,32 @@
 
 
 </table>
+
+
+<div>
+        <%if(books.length >= 12) {%>
+    
+        <div>
+            <label>Go to </label>
+            <form action="/books" method="GET">
+                <select name="page" class="btn btn-danger">
+                <%for(let j = 0; j < allBooks.length / 25; j++){%>
+                <%let page = j + 1%>
+                <option value="<%=page%>"><%= j + 1%></option>
+                <%}%>
+            </select>
+            <button class="btn btn-primary" type="submit">Get</button>
+            </form>
+        </div>
+        <!-- <%for(let i = 1; i < 5; i++){%>
+    
+                <a href="#" style="text-decoration: none;">
+                    <button class="btn btn-danger" href="" type="submit"
+                        style="font-size: 2rem; margin-top: 40px; margin-left: 20px; width: 50px;"><%=i%></button>
+                </a>
+    
+    
+                <%}%> -->
+        <%}%>
+    
+        </div>
