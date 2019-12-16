@@ -24,10 +24,13 @@ books</b></label>
     <%})%>
 </div>
 <div>
-    <%for(let i = 1; i < 5; i++){%>
+    <%if(books.length >= 12) {%>
+        <%for(let i = 1; i < 5; i++){%>
 
-       <a href="/page/<%=i%>" style="text-decoration: none;">
-            <button class="btn btn-danger" href="" type="submit" style="font-size: 2rem; margin-top: 40px; margin-left: 20px; width: 50px;"><%=i%></button>
-       </a>
-    <%}%>
+            <a href="#" style="text-decoration: none;">
+                 <button class="btn btn-danger" href="" type="submit" style="font-size: 2rem; margin-top: 40px; margin-left: 20px; width: 50px;"><%=i%></button>
+            </a>
+         <%}%>
+        <%}%>
+   
     </div>
