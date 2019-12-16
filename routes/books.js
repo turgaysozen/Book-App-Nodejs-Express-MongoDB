@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
         searchObject.publishedAfter = searchObject.gte('publishDate', req.query.publishedAfter);
     }
     try {
-        const books = await Book.find({}).skip((page - 1) * 25).limit(25);
+        const books = await Book.find(searchObject).skip((page - 1) * 25).limit(25);
         const authors = await Author.find();
         res.render('books/index', {
             books: books,

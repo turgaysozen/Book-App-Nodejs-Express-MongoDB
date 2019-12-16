@@ -8,8 +8,9 @@
     <label style="float: right; font-size: 16px; margin-top: 30px; margin-right: 15px;"><b>Total: <%= books.length%>
 books</b></label>
 </h2>
-Page: <%=page != null ? page : 1%>
-
+<%if(allBooks.length > 12 && page > 1){%>
+    Page: <%=page != null ? page : 1%>
+    <%}%>
 <div>
     <%let i = 0;%>
     <% books.forEach(book => { %>
