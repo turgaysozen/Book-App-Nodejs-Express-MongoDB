@@ -18,7 +18,7 @@ router.get('/login', (req, res) => {
 router.post('/login', passport.authenticate('local', { failureRedirect: '/users/login', failureFlash: true, session: true }),
     async (req, res) => {
         if (req.isAuthenticated()) {
-            let books = await Book.find().sort({ createdAt: 'asc' }).exec();
+            // let books = await Book.find().sort({ createdAt: 'asc' }).exec();
             // res.render('index', { name: req.user.name, books: books, allBooks: await Book.find() });
             res.redirect('/');
         }
@@ -52,7 +52,7 @@ router.post('/register', async (req, res) => {
         }
     } catch  {
         res.render('users/register', {
-            errorMessage: 'Register User Error !',
+            errorMessage: 'Error Register User !',
         });
     }
 });
@@ -93,7 +93,7 @@ router.post('/resetpsw', async (req, res) => {
             let newPsw = await bcrypt.hash(req.body.password, 10);
             existUser.password = newPsw;
             await existUser.save();
-            res.render('users/login', { successMessage: 'Password Change Success !', email: req.body.email });
+            res.render('users/login', { successMessage: 'Success Password Change !', email: req.body.email });
         }
         else {
             res.render('users/resetpsw', { errorMessage: 'Passwords are not match', email: req.body.email });

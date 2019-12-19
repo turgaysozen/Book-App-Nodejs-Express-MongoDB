@@ -32,8 +32,12 @@ books</b></label>
         <form action="/" method="GET">
             <select name="page" class="btn btn-danger">
             <%for(let j = 0; j < allBooks.length / 12; j++){%>
-            <%let page = j + 1%>
-            <option value="<%=page%>"><%= j + 1%></option>
+            <%let newpage = j + 1%>
+             <%if(newpage == page){%>
+                <option class="btn btn-success" selected value="<%= newpage%>"><%= j + 1%></option>
+                <%} else {%>
+                    <option class="btn btn-danger" value="<%= newpage%>"><%= j + 1%></option>
+                    <%}%>
             <%}%>
         </select>
         <button class="btn btn-primary" type="submit">Go</button>

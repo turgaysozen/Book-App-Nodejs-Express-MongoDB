@@ -93,7 +93,6 @@ router.get('/:id', async (req, res) => {
             author: author,
             booksByAuthor: books,
             name: req.isAuthenticated() == true ? req.user.name : null
-
         });
     } catch {
         res.redirect('/');
@@ -110,7 +109,6 @@ router.get('/:id/edit', async (req, res) => {
         res.render('authors/edit', {
             singleauthor: author,
             name: req.isAuthenticated() == true ? req.user.name : null
-
         });
     } catch  {
         res.redirect('/authors');
@@ -142,7 +140,6 @@ router.put('/:id', async (req, res) => {
                 singleauthor: author,
                 errorMessage: 'Error Updating Author',
                 name: req.isAuthenticated() == true ? req.user.name : null
-
             });
         }
     }

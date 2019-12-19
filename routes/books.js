@@ -101,7 +101,6 @@ router.get('/:id/edit', async (req, res) => {
             authors: authors,
             date: strDate,
             name: req.isAuthenticated() == true ? req.user.name : null
-
         });
     } catch  {
         res.redirect('/books');
@@ -126,7 +125,6 @@ router.put('/:id', async (req, res) => {
             book: book,
             author: author,
             name: req.isAuthenticated() == true ? req.user.name : null
-
         });
     } catch {
         res.redirect('/books');
